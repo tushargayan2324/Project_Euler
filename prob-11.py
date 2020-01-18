@@ -2,8 +2,8 @@
 #Author Tushar Gayan
 
 matrix = [
-[8, 02, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91, 8],
-[49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62, 00],
+[8, 2, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91, 8],
+[49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 00],
 [81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 03, 49, 13, 36, 65],
 [52, 70, 95, 23, 04, 60, 11, 42, 69, 24, 68, 56, 01, 32, 56, 71, 37, 02, 36, 91],
 [22, 31, 16, 71, 51, 67, 63, 89, 41, 92, 36, 54, 22, 40, 40, 28, 66, 33, 13, 80],
@@ -21,24 +21,44 @@ matrix = [
 [04, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18, 8, 46, 29, 32, 40, 62, 76, 36],
 [20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 04, 36, 16],
 [20, 73, 35, 29, 78, 31, 90, 01, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 05, 54],
-[01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48]
-]
+[01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48] ]
 
-product_1 = 1
-product_2 = 1
+prod_1 = 1
+prod_2 = 1
 
 for i in range(17):
     for j in range(17):
         for k in range(4):
-            product_2 *= matrix[i+k][j+k]
-            if product_1 < product_2:
-                product_1 = product_2
-                print product_1,i,j,k
-                break
-            else:
-                break
-            product_2 = 1
+            prod_1 *= matrix[i+k][j+k]
+        print(prod_1,i,j)
+        if prod_1 > prod_2:
+            prod_2 = prod_1
+        prod_1 = 1
 
-print(product_1)
 
-# INCOMPLETE CODE !!
+for i in range(17,4,-1):
+    for j in range(17):
+        for k in range(4):
+            prod_1 *= matrix[i-k][j+k]
+        print(prod_1,i,j)
+        if prod_1 > prod_2:
+            prod_2 = prod_1
+        prod_1 = 1
+
+
+print(prod_2)
+
+#product_1 = 1
+#product_2 = 1
+
+#for i in range(17):
+#   for j in range(17):
+#        for k in range(4):
+#            product_2 *= matrix[i+k][j+k]
+#        if product_1 < product_2:
+#            product_1 = product_2
+#            print product_1,i,j,k
+#        product_2 = 1
+
+#print(product_1)
+
