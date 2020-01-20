@@ -6,25 +6,28 @@ def coll_conj(n):
         return 1
     elif n%2==0:
         return n/2
-    else:
+    elif n%2!=0:
         return 3*n + 1
 
-def chain(n):
-    m = []
-    while n >= 1:
-        m.append(coll_conj(n))
-    print(m)
-    return len(m)
+def coll_chain(n):
+    num = n
+    chain_list = []
+    while num>1:
+        #print(num)
+        num = coll_conj(num)
+        chain_list.append(num)
+    return len(chain_list)+1
 
-list_num = []
+i = 1
+num_1 = 1
+num_2 = 0
 
-def chain_len(n):
-    i = n
-    coll_list = []
-    while coll_conj(n)>1:
-        coll_list.append(coll_conj(n))
-        i = coll_conj(n)
-        print(coll_conj(i))
-    return len(coll_list)
+for i in range(1000001):
+    num_1 = coll_chain(i)
+    if num_1 > num_2:
+        num_2 = num_1
+        c = i
+    num_1+=1
+    print(num_2,i,c)
 
-print(chain_len(13))
+print(num_2)

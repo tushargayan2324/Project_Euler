@@ -36,10 +36,13 @@ AP_list = []
 """
 print(len(prime_list))
 for jump in range(1, int((len(prime_list))/2)):
-    for i in range(1,int(len(prime_list)/jump)-2):
-        if 2*prime_list[i + jump] == prime_list[i] + prime_list[i + 2*jump]:
-            if perm_check(prime_list[i],prime_list[i+jump]) == True and perm_check(prime_list[i+jump],prime_list[i+2*jump]) == True:
-                AP_list.append((prime_list[i],prime_list[i+jump],prime_list[i+2*jump]))
-                print((prime_list[i],prime_list[i+jump],prime_list[i+2*jump]))
+    for i in range(1,int(len(prime_list)/jump)):
+        try:
+            if 2*prime_list[i + jump] == prime_list[i] + prime_list[i + 2*jump]:
+                if perm_check(prime_list[i],prime_list[i+jump]) == True and perm_check(prime_list[i+jump],prime_list[i+2*jump]) == True:
+                    AP_list.append((prime_list[i],prime_list[i+jump],prime_list[i+2*jump]))
+                    print((prime_list[i],prime_list[i+jump],prime_list[i+2*jump]))
+        except:
+            break
 
 print(set(AP_list))
